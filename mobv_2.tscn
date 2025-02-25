@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwjno755xoq65"]
+
+[ext_resource type="Script" path="res://mobv_2.gd" id="1_die1q"]
+[ext_resource type="PackedScene" uid="uid://c1l5273035glf" path="res://characters/slimev2.tscn" id="1_n5hxa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aouvy"]
+radius = 29.0
+
+[node name="Mobv2" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_die1q")
+
+[node name="Slimev2" parent="." instance=ExtResource("1_n5hxa")]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_aouvy")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://xixyl48tmio5"]
+
+[ext_resource type="Script" path="res://animation/character_walk backupv1.gd" id="1_0mqyr"]
+[ext_resource type="SpriteFrames" uid="uid://bki3c1puk7xr3" path="res://animation/character_walk.tres" id="2_1kau2"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(968, 537)
+script = ExtResource("1_0mqyr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(-2.99988, -2.99994)
+scale = Vector2(5, 5)
+sprite_frames = ExtResource("2_1kau2")
+animation = &"idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

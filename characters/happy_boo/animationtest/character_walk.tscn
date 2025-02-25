@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://xixyl48tmio5"]
+
+[ext_resource type="SpriteFrames" uid="uid://bki3c1puk7xr3" path="res://character_walk.tres" id="2_1kau2"]
+[ext_resource type="Script" path="res://character_walk.gd" id="4_o1dvk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_24cbg"]
+radius = 5.09902
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("4_o1dvk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(578, 346)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("2_1kau2")
+animation = &"walk_down"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(578, 351)
+shape = SubResource("CircleShape2D_24cbg")

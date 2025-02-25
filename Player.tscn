@@ -1,0 +1,163 @@
+[gd_scene load_steps=21 format=3 uid="uid://dnfflpexj5x4l"]
+
+[ext_resource type="Texture2D" uid="uid://c08i5owa4mmn" path="res://asset/ui x3.png" id="3_0wlme"]
+[ext_resource type="PackedScene" uid="uid://bcdkqxfne5foe" path="res://gun.tscn" id="3_1saad"]
+[ext_resource type="PackedScene" uid="uid://xixyl48tmio5" path="res://animation/character_walk.tscn" id="3_ix7fo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1854s"]
+atlas = ExtResource("3_0wlme")
+region = Rect2(960, 0, 96, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekfbh"]
+atlas = ExtResource("3_0wlme")
+region = Rect2(864, 0, 96, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cp2t5"]
+atlas = ExtResource("3_0wlme")
+region = Rect2(768, 0, 96, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u20vo"]
+atlas = ExtResource("3_0wlme")
+region = Rect2(672, 0, 96, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ew06"]
+atlas = ExtResource("3_0wlme")
+region = Rect2(576, 0, 96, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0cy3"]
+atlas = ExtResource("3_0wlme")
+region = Rect2(480, 0, 96, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmih8"]
+atlas = ExtResource("3_0wlme")
+region = Rect2(384, 0, 96, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axqsu"]
+atlas = ExtResource("3_0wlme")
+region = Rect2(288, 0, 96, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36q0y"]
+atlas = ExtResource("3_0wlme")
+region = Rect2(192, 0, 96, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsb2c"]
+atlas = ExtResource("3_0wlme")
+region = Rect2(96, 0, 96, 88)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6w05t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1854s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekfbh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cp2t5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u20vo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ew06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0cy3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmih8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_axqsu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36q0y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsb2c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0iwwl"]
+bg_color = Color(0.219608, 0.247059, 0.27451, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uyvpa"]
+bg_color = Color(0.0431373, 0.647059, 0.435294, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8kg04"]
+radius = 35.0143
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vhhkg"]
+radius = 34.5398
+
+[sub_resource type="Gradient" id="Gradient_0cokd"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nvcei"]
+gradient = SubResource("Gradient_0cokd")
+fill = 1
+fill_from = Vector2(0.521368, 0.508547)
+fill_to = Vector2(0.858974, 0.850427)
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="Hasagi" parent="." instance=ExtResource("3_ix7fo")]
+position = Vector2(1050, -319)
+
+[node name="ProgressBarTexture" type="AnimatedSprite2D" parent="Hasagi"]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(1, -104)
+scale = Vector2(1.2, 1.2)
+sprite_frames = SubResource("SpriteFrames_6w05t")
+
+[node name="ProgressBar" type="ProgressBar" parent="Hasagi"]
+unique_name_in_owner = true
+visible = false
+offset_left = -60.0
+offset_top = -116.0
+offset_right = 84.0
+offset_bottom = -97.0
+theme_override_styles/background = SubResource("StyleBoxFlat_0iwwl")
+theme_override_styles/fill = SubResource("StyleBoxFlat_uyvpa")
+value = 100.0
+show_percentage = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hasagi"]
+position = Vector2(2, 19)
+shape = SubResource("CircleShape2D_8kg04")
+
+[node name="Camera2D" type="Camera2D" parent="Hasagi"]
+position = Vector2(2, 13)
+
+[node name="Gun" parent="Hasagi" instance=ExtResource("3_1saad")]
+position = Vector2(1, 15)
+
+[node name="HurtBox" type="Area2D" parent="Hasagi"]
+unique_name_in_owner = true
+position = Vector2(-3, 19)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hasagi/HurtBox"]
+position = Vector2(4, -1)
+shape = SubResource("CircleShape2D_vhhkg")
+debug_color = Color(0.922548, 0.178812, 0.533498, 0.42)
+
+[node name="PointLight2D" type="PointLight2D" parent="Hasagi"]
+visibility_layer = 31
+position = Vector2(-7.00006, 15)
+scale = Vector2(19.4531, 19.4531)
+texture = SubResource("GradientTexture2D_nvcei")

@@ -1,0 +1,155 @@
+[gd_scene load_steps=21 format=3 uid="uid://c1l5273035glf"]
+
+[ext_resource type="Texture2D" uid="uid://bufcrh8mpye3i" path="res://asset/s;ime/Tiled_files/Slime1_Hurt_body.png" id="1_4ji75"]
+[ext_resource type="Script" path="res://characters/slimesilme.gd" id="1_563ed"]
+[ext_resource type="Texture2D" uid="uid://b6sicb1t7u4m5" path="res://asset/s;ime/Tiled_files/Slime1_Walk_body.png" id="2_mqahh"]
+[ext_resource type="Texture2D" uid="uid://ccyvivvm5w3gi" path="res://asset/s;ime/PNG/Slime1/Walk/Slime1_Walk_shadow.png" id="4_lpvpk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ui1hu"]
+atlas = ExtResource("1_4ji75")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkh0v"]
+atlas = ExtResource("1_4ji75")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxjj3"]
+atlas = ExtResource("1_4ji75")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n21na"]
+atlas = ExtResource("1_4ji75")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amgjm"]
+atlas = ExtResource("1_4ji75")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdbvg"]
+atlas = ExtResource("2_mqahh")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3op7"]
+atlas = ExtResource("2_mqahh")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iuh2e"]
+atlas = ExtResource("2_mqahh")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyj3q"]
+atlas = ExtResource("2_mqahh")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sil2x"]
+atlas = ExtResource("2_mqahh")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43xky"]
+atlas = ExtResource("2_mqahh")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqwqa"]
+atlas = ExtResource("2_mqahh")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmcd2"]
+atlas = ExtResource("2_mqahh")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v1m0r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ui1hu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkh0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxjj3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n21na")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amgjm")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdbvg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3op7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iuh2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lyj3q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sil2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43xky")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqwqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmcd2")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_spun0"]
+colors = PackedColorArray(0.864163, 0, 0.279339, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_er434"]
+gradient = SubResource("Gradient_spun0")
+fill = 1
+fill_from = Vector2(0.508547, 0.5)
+fill_to = Vector2(0.935897, 0.333333)
+
+[node name="Slimev2" type="Node2D"]
+visibility_layer = 3
+z_index = 1
+script = ExtResource("1_563ed")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 0.419809, 0.404271, 1)
+texture_filter = 1
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_v1m0r")
+animation = &"walk"
+frame = 5
+frame_progress = 0.326357
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 0
+z_index = -1
+texture_filter = 1
+position = Vector2(-1, 47)
+scale = Vector2(3, 3)
+texture = ExtResource("4_lpvpk")
+hframes = 8
+vframes = 3
+frame = 6
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(12, 5)
+scale = Vector2(0.578125, 0.578125)
+texture = SubResource("GradientTexture2D_er434")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(-15, 5)
+scale = Vector2(0.578125, 0.578125)
+texture = SubResource("GradientTexture2D_er434")

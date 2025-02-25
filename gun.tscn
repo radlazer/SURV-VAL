@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcdkqxfne5foe"]
+
+[ext_resource type="Script" path="res://gun.gd" id="1_x1by7"]
+[ext_resource type="Texture2D" uid="uid://ccl0fox3smrsm" path="res://asset/Glock - P80 [64x48]/1.png" id="2_awrqv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_18hst"]
+radius = 530.06
+
+[node name="Gun" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_x1by7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+texture_filter = 1
+shape = SubResource("CircleShape2D_18hst")
+
+[node name="WeaponPivot" type="Marker2D" parent="."]
+
+[node name="Pistol" type="Sprite2D" parent="WeaponPivot"]
+texture_filter = 1
+position = Vector2(130.719, -4.46635)
+scale = Vector2(4.31671, 4.31671)
+texture = ExtResource("2_awrqv")
+hframes = 16
+vframes = 8
+frame = 112
+
+[node name="ShootingPoint" type="Marker2D" parent="WeaponPivot/Pistol"]
+unique_name_in_owner = true
+position = Vector2(4.69832, 0.803008)
+scale = Vector2(0.503132, 0.503132)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
